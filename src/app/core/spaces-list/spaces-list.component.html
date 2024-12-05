@@ -1,1 +1,12 @@
-<p>spaces-list works!</p>
+<div class="spaces-list">
+    @for (space of spaces; track $index) {
+    <div class="space-card">
+        <img [src]="space.image" [alt]="space.name" class="space-image" />
+        <div class="space-info">
+            <h3 class="space-name">{{ space.name }}</h3>
+            <p class="space-location">{{ space.location }}</p>
+            <p class="space-price">{{ space.price }}</p>
+        </div>
+    </div>
+    }
+</div>
