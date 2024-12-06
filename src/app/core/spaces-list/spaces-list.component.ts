@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { Space } from '../../types/space';
 
 @Component({
   selector: 'app-spaces-list',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './spaces-list.component.css',
 })
 export class SpacesListComponent {
-  spaces = [
+  spaces: Space[] = [
     {
       image: 'https://via.placeholder.com/300x150',
       name: 'Cozy Apartment in City Center',
@@ -57,4 +59,11 @@ export class SpacesListComponent {
       price: 120,
     },
   ];
+
+  constructor(private apiService: ApiService) {}
+  ngOnInit() {
+    this.apiService.getSpaces().subscribe((s) => {
+      console.log(s);
+    });
+  }
 }
