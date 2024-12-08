@@ -31,3 +31,7 @@ export class AppComponent {
       });
   }
 }
+
+
+// Try to fetch data from 'https://jsonplaceholder.typicode.com/users'
+// 2:30:00

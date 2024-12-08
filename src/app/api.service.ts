@@ -11,9 +11,11 @@ export class ApiService {
 
   getSpaces(): Observable<any> {
     const dbRef = ref(this.db);
-    const spacesRef = child(dbRef, 'spaces'); // Adjust the path to match your database structure
+    const spacesRef = child(dbRef, "spaces");
 
     // Wrap the promise from Firebase in an Observable
     return from(get(spacesRef).then((snapshot) => snapshot.val()));
   }
+
+  
 }
