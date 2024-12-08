@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../api.service';
-import { Space } from '../../types/space';
+import { ApiService } from '../../../api.service';
+import { Space } from '../../../types/space';
 
 @Component({
   selector: 'app-spaces-list',

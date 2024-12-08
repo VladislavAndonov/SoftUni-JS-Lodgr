@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SpacesListComponent } from '../spaces-list/spaces-list.component';
-import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SearchBarComponent } from '../../features/spaces/search-bar/search-bar.component';
+import { SpacesListComponent } from '../../features/spaces/spaces-list/spaces-list.component';
 
 @Component({
   selector: 'app-main',
-  imports: [SpacesListComponent, SearchBarComponent, SearchBarComponent],
+  imports: [SpacesListComponent, SearchBarComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

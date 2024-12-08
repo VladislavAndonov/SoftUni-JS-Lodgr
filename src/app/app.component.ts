@@ -3,11 +3,12 @@ import { Database, ref, get } from '@angular/fire/database';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { MainComponent } from './core/main/main.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, MainComponent],
+  imports: [HeaderComponent, FooterComponent, MainComponent, ErrorPageComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
