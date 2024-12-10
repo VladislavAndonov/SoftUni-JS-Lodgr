@@ -16,6 +16,4 @@ export class ApiService {
     // Wrap the promise from Firebase in an Observable
     return from(get(spacesRef).then((snapshot) => snapshot.val()));
   }
-
-  
 }
