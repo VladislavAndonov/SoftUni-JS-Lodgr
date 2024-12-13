@@ -1,0 +1,36 @@
+<div class="details-container">
+    <div class="image-carousel">
+        @for (image of space.images; track space.id) {
+            <img [src]="image" [alt]="space.name" />
+        }
+    </div>
+
+    <div class="details-content">
+        <h1 class="space-title">{{ space.name }}</h1>
+        <p class="space-location">{{ space.location }}</p>
+
+        <div class="price-info">
+            <p class="price">€{{ space.price }} <span>/ per night</span></p>
+        </div>
+
+        <div class="space-description">
+            <h2>Description</h2>
+            <p>{{ space.description }}</p>
+        </div>
+
+        <!-- <div class="space-amenities">
+            <h2>Amenities</h2>
+            <ul>
+                @for (amenity of space.amenities) {
+                    <li>{{ amenity }}</li>
+                }
+            </ul>
+        </div> -->
+
+        <!-- <div class="host-info">
+            <h2>Hosted by {{ space?.owner?.name }}</h2>
+            <img [src]="space.owner.imageUrl" alt="Host Image" class="host-image" />
+        </div> -->
+
+    </div>
+</div>

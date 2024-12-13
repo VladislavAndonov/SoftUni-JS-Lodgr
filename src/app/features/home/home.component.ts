@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
-import { SpacesListComponent } from '../spaces/spaces-list/spaces-list.component';
-import { SearchBarComponent } from '../spaces/search-bar/search-bar.component';
+import { ApiService } from '../../api.service';
+import { Space } from '../../types/space';
+import { SearchBarComponent } from '../../core/shared/search-bar/search-bar.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SpacesListComponent, SearchBarComponent],
+  imports: [SearchBarComponent, RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  featuredSpaces: Space[] = [];
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() : void {
+    this.apiService.getSpaces().subscribe((spaces: Space[]) => {
+      this.featuredSpaces = spaces.slice(0, 4);
+    });
+  }
 }

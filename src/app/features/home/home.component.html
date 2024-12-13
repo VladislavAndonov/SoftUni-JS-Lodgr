@@ -1,4 +1,26 @@
-<div class="main-container">
-    <app-search-bar />
-    <app-spaces-list />
+<div class="home">
+    <div class="hero-section">
+        <app-search-bar></app-search-bar>
+    </div>
+
+    <!-- Featured Spaces Section -->
+    <div class="featured-spaces-section">
+        <h2>Featured Spaces</h2>
+        <div class="featured-spaces">
+            @for (space of featuredSpaces; track $index) {
+            <div class="space-card">
+                <img [src]="space.images[0]" [alt]="space.name" class="space-image" />
+                <div class="space-info">
+                    <h3 class="space-name">{{ space.name }}</h3>
+                    <p class="space-location">{{ space.location }}</p>
+                    <p class="space-price">{{ space.price }}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <button class="cta-button" routerLink="/spaces">View All Spaces</button>
+    </div>
 </div>

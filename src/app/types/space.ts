@@ -1,13 +1,13 @@
 import { Owner } from "./owner";
 
 export interface Space {
-    id: number;
+    id: string;
     name: string;
-    imageUrl: string;
     location: string;
     price: number;
+    images: string[];
+    description: string;
    
 }
 
- // description: string;
     // owner: Owner;

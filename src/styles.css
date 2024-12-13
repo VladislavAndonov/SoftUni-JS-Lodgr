@@ -1,4 +1,4 @@
-/* Reset CSS*/
+/* Reset CSS */
 
 * {
   padding: 0;
@@ -15,7 +15,7 @@ html {
   box-sizing: inherit;
 }
 
-/* Typography*/
+/* Typography */
 
 html {
   font: 18px/1.5 Verdana, sans-serif;
@@ -117,4 +117,4 @@ blockquote p:last-child {
 
 blockquote p.author {
   text-align: right;
-}
+} 
