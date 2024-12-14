@@ -13,7 +13,7 @@
                 @if(isLoggedIn) {
                     <!-- User routes -->
                     <li><a routerLink="/rent-space">Rent Your Space</a></li>
-                    <li><a routerLink="#">Logout</a></li>
+                    <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
                 } @else {
                     <!-- Guest routes -->
                     <li><a routerLink="/login">Login</a></li>

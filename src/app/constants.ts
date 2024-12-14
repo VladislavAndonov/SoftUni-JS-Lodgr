@@ -1,0 +1,1 @@
+export const EMAIL_DOMAINS = ['gmail.com', 'outlook.com', 'hotmail.com', 'protonmail.com']

@@ -6,6 +6,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { SpacesComponent } from './features/spaces/spaces.component';
 import { SpaceDetailsComponent } from './features/spaces/space-details/space-details.component';
 import { RentSpaceComponent } from './features/rent-space/rent-space.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,7 @@ export const routes: Routes = [
     ]
   },
 
-  { path: 'rent-space', component: RentSpaceComponent },
+  { path: 'rent-space', component: RentSpaceComponent, canActivate: [AuthGuard]},
 
   { path: '404', component: ErrorPageComponent },
   { path: '**', redirectTo: '/404' },
