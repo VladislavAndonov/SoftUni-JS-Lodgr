@@ -1,6 +1,6 @@
 <div class="details-container">
     <div class="image-carousel">
-        @for (image of space.images; track space.id) {
+        @for (image of space.images; track $index) {
         <img [src]="image" [alt]="space.name" />
         }
     </div>

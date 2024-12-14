@@ -1,4 +1,4 @@
-import { Owner } from "./owner";
+// import { User } from "./user";
 
 export interface Space {
     id: string;
@@ -8,4 +8,4 @@ export interface Space {
     images: string[];
     description: string;
 }
-    // owner: Owner;
+    // owner: User;

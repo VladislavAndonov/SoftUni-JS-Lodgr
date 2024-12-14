@@ -5,14 +5,22 @@
         </div>
         <nav class="navigation">
             <ul>
+
+
                 <li><a routerLink="/">Home</a></li>
                 <li><a routerLink="/spaces">Explore Spaces</a></li>
-                <!-- User routes -->
-                <li><a routerLink="/rent-space">Rent a Space</a></li>
-                 <!-- Guest routes -->
-                <li><a routerLink="/login">Login</a></li>
-                <li><a routerLink="/register">Register</a></li>
-            </ul>
+                
+                @if(isLoggedIn) {
+                    <!-- User routes -->
+                    <li><a routerLink="/rent-space">Rent Your Space</a></li>
+                    <li><a routerLink="#">Logout</a></li>
+                } @else {
+                    <!-- Guest routes -->
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/register">Register</a></li>
+                }
+                
+                </ul>
         </nav>
     </div>
 </header>
