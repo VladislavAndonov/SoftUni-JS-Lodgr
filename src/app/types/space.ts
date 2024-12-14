@@ -7,7 +7,5 @@ export interface Space {
     price: number;
     images: string[];
     description: string;
-   
 }
-
     // owner: Owner;

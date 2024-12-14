@@ -1,0 +1,44 @@
+<div class="rent-space-container">
+    <h1 class="title">Rent Your Space</h1>
+    <form class="rent-form">
+
+        <div class="form-group">
+            <label for="name">Space Name</label>
+            <input id="name" type="text" name="name" placeholder="e.g., Cozy Apartment" #inputSpaceName />
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" type="text" name="location" placeholder="e.g., Sofia, Bulgaria" #inputSpaceLocation />
+        </div>
+        <div class="form-group">
+            <label for="price">Price (€)</label>
+            <input id="price" type="number" name="price" step=".01" placeholder="e.g., 50" #inputSpacePrice />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Describe your space..."
+                #inputSpaceDescription></textarea>
+        </div>
+        <div class="form-group">
+            <label for="images">Images (Comma-separated URLs)</label>
+            <input id="images" type="text" name="images" placeholder="e.g., http://image1.jpg, http://image2.jpg"
+                #inputSpaceImages />
+        </div>
+
+        <button type="submit" class="submit-button"
+            (click)="addSpace(inputSpaceName.value, inputSpaceLocation.value, inputSpacePrice.value, inputSpaceDescription.value, inputSpaceImages.value)">Submit
+        </button>
+    </form>
+</div>
+
+<!-- [formGroup]="rentForm" -->
+
+
+<!-- <div class="form-group">
+        <label for="amenities">Amenities (Comma-separated)</label>
+        <input id="amenities" type="text" name="amenities" placeholder="e.g., WiFi, Parking, Pool" />
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input id="category" type="text" name="category" placeholder="e.g., Apartment" />
+    </div> -->

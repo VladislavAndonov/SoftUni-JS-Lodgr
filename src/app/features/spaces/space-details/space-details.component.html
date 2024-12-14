@@ -1,7 +1,7 @@
 <div class="details-container">
     <div class="image-carousel">
         @for (image of space.images; track space.id) {
-            <img [src]="image" [alt]="space.name" />
+        <img [src]="image" [alt]="space.name" />
         }
     </div>
 
@@ -17,8 +17,10 @@
             <h2>Description</h2>
             <p>{{ space.description }}</p>
         </div>
+    </div>
+</div>
 
-        <!-- <div class="space-amenities">
+<!-- <div class="space-amenities">
             <h2>Amenities</h2>
             <ul>
                 @for (amenity of space.amenities) {
@@ -27,10 +29,7 @@
             </ul>
         </div> -->
 
-        <!-- <div class="host-info">
+<!-- <div class="host-info">
             <h2>Hosted by {{ space?.owner?.name }}</h2>
             <img [src]="space.owner.imageUrl" alt="Host Image" class="host-image" />
         </div> -->
-
-    </div>
-</div>

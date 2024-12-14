@@ -17,7 +17,7 @@ export class SpacesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getSpaces().subscribe((spaces: Space[]) => {
-      this.spaceList = spaces;
+      this.spaceList = Object.entries(spaces).map(([spaceId, spaceData]) => spaceData);
     });
   }
 }

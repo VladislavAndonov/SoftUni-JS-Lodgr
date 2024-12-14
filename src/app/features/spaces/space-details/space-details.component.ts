@@ -7,20 +7,20 @@ import { Space } from '../../../types/space';
   selector: 'app-space-details',
   standalone: true,
   templateUrl: './space-details.component.html',
-  styleUrl: './space-details.component.css',
+  styleUrls: ['./space-details.component.css'],
 })
 export class SpaceDetailsComponent implements OnInit {
-  space : Space = {} as Space;
-  
+  private spaceId: string | null = null;
+  public space: Space = {} as Space;
+
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
-  ngOnInit() {
-    const spaceId = this.route.snapshot.paramMap.get('id');
-    if (spaceId) {
-      this.apiService.getOneSpace(spaceId).subscribe((space : Space) => {
+  ngOnInit(): void {
+    this.spaceId = this.route.snapshot.paramMap.get('id');
+    if (this.spaceId) {
+      this.apiService.getOneSpace(this.spaceId).subscribe((space: Space) => {
         this.space = space;
       });
     }
   }
 }
-

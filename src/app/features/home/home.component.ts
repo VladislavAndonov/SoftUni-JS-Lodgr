@@ -18,7 +18,7 @@ export class HomeComponent {
 
   ngOnInit() : void {
     this.apiService.getSpaces().subscribe((spaces: Space[]) => {
-      this.featuredSpaces = spaces.slice(0, 4);
+      this.featuredSpaces = Object.entries(spaces).slice(0, 4).map(([key, value]) => value);
     });
   }
 }
