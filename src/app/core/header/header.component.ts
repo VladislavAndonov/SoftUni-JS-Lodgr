@@ -13,8 +13,8 @@ export class HeaderComponent {
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
-  get firstName(): string {
-    return this.userService.user?.firstName || '';
+  get name(): string {
+    return this.userService.user?.name || '';
   }
 
   constructor(private userService: UserService, private router: Router) {}

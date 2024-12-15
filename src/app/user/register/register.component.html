@@ -1,18 +1,116 @@
-<div class="auth-container">
-    <h1>Create an Account</h1>
-    <form class="auth-form">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required />
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Create a password" required />
-
-        <label for="rePassword">Confirm Password</label>
-        <input type="password" id="rePassword" name="rePassword" placeholder="Confirm your password" required />
-
-        <button type="submit" class="auth-button">Sign Up</button>
-    </form>
-    <p class="auth-footer">
-        Already have an account? <a routerLink="/login">Log In</a>
-    </p>
-</div>
+<div class="auth-overlay">
+    <div class="auth-container auth-container-right">
+      <div class="auth-wrapper">
+        <h1>Create an Account</h1>
+        <form class="auth-form" [formGroup]="form" (ngSubmit)="register()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="John Doe"
+              required
+              formControlName="name"
+              [class]="isInputMissing('name') || isInputMinLength('name', 4) ? 'input-error' : ''"
+            />
+          </div>
+          @if(form.get('name')?.touched) {
+            <div>
+              @if(form.get('name')?.errors?.['required']) {
+                <p class="error-message">Name is required!</p>
+              }
+              @if(form.get('name')?.errors?.['minlength']) {
+                <p class="error-message">Name must be at least 4 characters!</p>
+              }
+            </div>
+          }
+  
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="john.doe@gmail.com"
+              required
+              formControlName="email"
+              [class]="isInputMissing('email') || isEmailInvalid ? 'input-error' : ''"
+            />
+          </div>
+          @if(form.get('email')?.touched) {
+            <div>
+              @if(form.get('email')?.errors?.['required']) {
+                <p class="error-message">Email is required!</p>
+              }
+              @if(form.get('email')?.errors?.['emailValidator']) {
+                <p class="error-message">Email is not valid!</p>
+              }
+            </div>
+          }
+  
+          <div class="form-group phone-group">
+            <label for="phoneNumber">Phone</label>
+            <div class="phone-input">
+              <select id="select-tel" formControlName="countryCode">
+                <option value="00359">+359</option>
+                <option value="0031">+31</option>
+                <option value="0044">+44</option>
+              </select>
+              <input
+                type="tel"
+                id="phoneNumber"
+                placeholder="888 800 800"
+                formControlName="phoneNumber"
+              />
+            </div>
+          </div>
+  
+          <div formGroupName="passGroup" class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Create a password"
+              required
+              formControlName="password"
+              [class]="isInputMissing('password') || isInputMinLength('password', 6) ? 'input-error' : ''"
+            />
+          </div>
+          @if(passGroup?.get('password')?.touched) {
+            <div>
+              @if(passGroup?.get('password')?.errors?.['required']) {
+                <p class="error-message">Password is required!</p>
+              }
+              @if(passGroup?.get('password')?.errors?.['minlength']) {
+                <p class="error-message">Password must be at least 6 characters!</p>
+              }
+            </div>
+          }
+  
+          <div class="form-group">
+            <label for="rePassword">Confirm</label>
+            <input
+              type="password"
+              id="rePassword"
+              placeholder="Confirm your password"
+              required
+              formControlName="rePassword"
+              [class]="isInputMissing('rePassword') || passGroup?.errors?.['matchPasswordsValidator'] ? 'input-error' : ''"
+            />
+          </div>
+          @if(passGroup?.get("rePassword")?.touched) {
+            <div>
+              @if(passGroup?.errors?.['matchPasswordsValidator']) {
+                <p class="error-message">Passwords do not match!</p>
+              }
+            </div>
+          }
+  
+          <button [disabled]="form.invalid" class="auth-button">Sign Up</button>
+        </form>
+        <p class="auth-footer">
+          Already have an account? <a routerLink="/login">Log In</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  
