@@ -11,7 +11,8 @@
           placeholder="Enter your email" 
           ngModel 
           #inputEmail="ngModel"
-          required [appEmail]="domains" 
+          required 
+          [appEmail]="domains" 
         />
         @if(inputEmail?.touched){
         <div>
@@ -32,7 +33,8 @@
           placeholder="Enter your password" 
           ngModel
           #inputPassword="ngModel" 
-          required [minlength]="6"
+          required 
+          [minlength]="6"
         />
         @if(inputPassword?.touched){
         <div>
@@ -55,11 +57,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- @if(inputEmail.invalid && inputEmail.touched){
-<div class="error-message">
-  Please enter a valid email address.
-</div>
-} -->

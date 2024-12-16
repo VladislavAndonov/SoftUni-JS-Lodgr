@@ -1,32 +1,125 @@
 <div class="rent-space-container">
     <h1 class="title">Rent Your Space</h1>
-    <form class="rent-form">
 
+    <form class="rent-form" #form="ngForm" (ngSubmit)="addSpaceSubmit(form)">
         <div class="form-group">
             <label for="name">Space Name</label>
-            <input id="name" type="text" name="name" placeholder="e.g., Cozy Apartment" #inputSpaceName />
+            <input 
+            id="name" 
+            type="text" 
+            name="name" 
+            placeholder="Cozy Apartment" 
+            ngModel
+            #inputSpaceName="ngModel"
+            required
+            minlength="5"
+            />
         </div>
+        @if(inputSpaceName?.touched){
+        <div>
+            @if(inputSpaceName?.errors?.['required']){
+            <p class="error-message">Space name is required!</p>
+            }
+
+            @if(inputSpaceName?.errors?.['minlength']){
+            <p class="error-message">Space name must be at least 5 characters!</p>
+            }
+        </div>
+        }
         <div class="form-group">
             <label for="location">Location</label>
-            <input id="location" type="text" name="location" placeholder="e.g., Sofia, Bulgaria" #inputSpaceLocation />
+            <input 
+            id="location" 
+            type="text" 
+            name="location" 
+            placeholder="Sofia, Bulgaria"
+            ngModel 
+            #inputSpaceLocation="ngModel"
+            required
+            minlength="5"
+            />
         </div>
+        @if(inputSpaceLocation?.touched){
+            <div>
+                @if(inputSpaceLocation?.errors?.['required']){
+                <p class="error-message">Location is required!</p>
+                }
+    
+                @if(inputSpaceLocation?.errors?.['minlength']){
+                <p class="error-message">Location must be at least 5 characters!</p>
+                }
+            </div>
+        }
         <div class="form-group">
-            <label for="price">Price (€)</label>
-            <input id="price" type="number" name="price" step=".01" placeholder="e.g., 50" #inputSpacePrice />
+            <label for="price">Price Per Stay (€)</label>
+            <input 
+            id="price" 
+            type="number" 
+            name="price" 
+            placeholder="49" 
+            ngModel
+            #inputSpacePrice="ngModel"
+            required
+            />
         </div>
+        @if(inputSpacePrice?.touched){
+            <div>
+                @if(inputSpacePrice?.errors?.['required']){
+                <p class="error-message">Price is required!</p>
+                }
+            </div>
+        }
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" placeholder="Describe your space..."
-                #inputSpaceDescription></textarea>
+            <textarea 
+            id="description" 
+            name="description" 
+            placeholder="Describe your space..."
+            ngModel
+            #inputSpaceDescription="ngModel"
+            required
+            minlength="10"
+            >
+            </textarea>
         </div>
+        @if(inputSpaceDescription?.touched){
+            <div>
+                @if(inputSpaceDescription?.errors?.['required']){
+                <p class="error-message">Description is required!</p>
+                }
+    
+                @if(inputSpaceDescription?.errors?.['minlength']){
+                <p class="error-message">Description must be at least 5 characters!</p>
+                }
+            </div>
+        }
         <div class="form-group">
             <label for="images">Images (Comma-separated URLs)</label>
-            <input id="images" type="text" name="images" placeholder="e.g., http://image1.jpg, http://image2.jpg"
-                #inputSpaceImages />
+            <input 
+            id="images" 
+            type="text" 
+            name="images" 
+            placeholder="http://image1.jpg, http://image2.jpg"
+            ngModel
+            #inputSpaceImages="ngModel"
+            required
+            appImages
+            />
         </div>
+        @if(inputSpaceImages?.touched){
+            <div>
+                @if(inputSpaceImages?.errors?.['required']){
+                <p class="error-message">Add at least one image!</p>
+                }
+    
+                @if(inputSpaceImages?.errors?.['imagesValidator']){
+                <p class="error-message">Please enter valid image URL(s)!</p>
+                }
+            </div>
+        }
 
-        <button type="submit" class="submit-button"
-            (click)="addSpace(inputSpaceName.value, inputSpaceLocation.value, inputSpacePrice.value, inputSpaceDescription.value, inputSpaceImages.value)">Submit
+        <button class="submit-button" [disabled]="form.invalid">
+            Submit
         </button>
     </form>
 </div>
