@@ -1,3 +1,78 @@
+<div class="container">
+
+  <div class="image-section"></div>
+
+    <div class="form-section">
+      <h2>WELCOME BACK</h2>
+      <h1>Log In<span class="dot">.</span></h1>
+      <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+
+      <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email"
+          id="email" 
+          name="email" 
+          placeholder="john.doe@gmail.com" 
+          ngModel 
+          #inputEmail="ngModel"
+          required 
+          [appEmail]="domains" 
+        />
+        @if(inputEmail?.touched){
+        <div>
+          @if(inputEmail?.errors?.['required']){
+          <p class="error-message">Email address is required!</p>
+          }
+
+          @if (inputEmail?.errors?.['emailValidator']){
+          <p class="error-message">Please enter a valid email address!</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="••••••••" 
+          ngModel
+          #inputPassword="ngModel" 
+          required 
+          [minlength]="6"
+        />
+        @if(inputPassword?.touched){
+        <div>
+          @if(inputPassword?.errors?.['required']) {
+            <p class="error-message">Password is required!</p>
+          }
+
+          @if (inputPassword?.errors?.['minlength']) {
+            <p class="error-message">Password must be at least 6 characters!</p>
+          }
+        </div>
+        }
+      </div>
+      
+      <div class="buttons">
+        <button class="login-button" [disabled]="form.invalid">
+          Log In
+        </button>
+      </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+<!-- Original Code
+
+
 <div class="auth-overlay">
   <div class="auth-container">
     <div class="auth-wrapper">
@@ -57,3 +132,5 @@
     </div>
   </div>
 </div>
+
+!-->
