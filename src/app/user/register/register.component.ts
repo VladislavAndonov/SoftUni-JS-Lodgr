@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
 import { EMAIL_DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
+import { min } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +35,7 @@ export class RegisterComponent {
     }),
   });
 
+  // General validations
   isInputMissing(controlName: string) {
     return (
       this.form.get(controlName)?.touched &&
@@ -41,10 +43,10 @@ export class RegisterComponent {
     );
   }
 
-  isInputMinLength(controlName: string, minLength: number) {
+  isInputMinLength(controlName: string) {
     return (
       this.form.get(controlName)?.touched &&
-      this.form.get(controlName)?.errors?.[minLength]
+      this.form.get(controlName)?.errors?.['minlength']
     );
   }
 
@@ -55,6 +57,7 @@ export class RegisterComponent {
     );
   }
 
+  // Pass group validations
   get passGroup() {
     return this.form.get('passGroup');
   }
@@ -65,7 +68,16 @@ export class RegisterComponent {
       this.passGroup?.get('password')?.errors?.['minlength']
     );
   }
+  isPassMissing(controlName: string) {
+    return (
+      this.passGroup?.get(controlName)?.touched &&
+      this.passGroup?.get(controlName)?.errors?.['required']
+    );
+  }
 
+  
+
+  // Register
   register() {
     console.log(this.form.value);
   }

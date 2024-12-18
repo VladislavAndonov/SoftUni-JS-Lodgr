@@ -23,11 +23,11 @@
         @if(inputEmail?.touched){
         <div>
           @if(inputEmail?.errors?.['required']){
-          <p class="error-message">Email address is required!</p>
+          <p class="error">Email address is required!</p>
           }
 
           @if (inputEmail?.errors?.['emailValidator']){
-          <p class="error-message">Please enter a valid email address!</p>
+          <p class="error">Please enter a valid email address!</p>
           }
         </div>
         }
@@ -48,11 +48,11 @@
         @if(inputPassword?.touched){
         <div>
           @if(inputPassword?.errors?.['required']) {
-            <p class="error-message">Password is required!</p>
+            <p class="error">Password is required!</p>
           }
 
           @if (inputPassword?.errors?.['minlength']) {
-            <p class="error-message">Password must be at least 6 characters!</p>
+            <p class="error">Password must be at least 6 characters!</p>
           }
         </div>
         }
@@ -92,11 +92,11 @@
         @if(inputEmail?.touched){
         <div>
           @if(inputEmail?.errors?.['required']){
-          <p class="error-message">Email address is required!</p>
+          <p class="error">Email address is required!</p>
           }
 
           @if (inputEmail?.errors?.['emailValidator']){
-          <p class="error-message">Please enter a valid email address!</p>
+          <p class="error">Please enter a valid email address!</p>
           }
         </div>
         }
@@ -114,11 +114,11 @@
         @if(inputPassword?.touched){
         <div>
           @if(inputPassword?.errors?.['required']) {
-            <p class="error-message">Password is required!</p>
+            <p class="error">Password is required!</p>
           }
 
           @if (inputPassword?.errors?.['minlength']) {
-            <p class="error-message">Password must be at least 6 characters!</p>
+            <p class="error">Password must be at least 6 characters!</p>
           }
         </div>
         }

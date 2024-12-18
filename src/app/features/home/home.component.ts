@@ -16,9 +16,20 @@ export class HomeComponent {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit() : void {
-    this.apiService.getSpaces().subscribe((spaces: Space[]) => {
-      this.featuredSpaces = Object.entries(spaces).slice(0, 4).map(([key, value]) => value);
-    });
+  ngOnInit(): void {
+    this.apiService
+      .getAllSpaces('Spaces')
+      .then((snapshot) => {
+        this.featuredSpaces = snapshot.docs.map(
+          (doc) =>
+            ({
+              id: doc.id,
+              ...doc.data(),
+            } as Space)
+        );
+      })
+      .catch((error) => {
+        console.error('Error fetching spaces:', error);
+      });
   }
 }

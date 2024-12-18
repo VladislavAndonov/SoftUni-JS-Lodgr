@@ -16,8 +16,15 @@ export class SpacesListComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getSpaces().subscribe((spaces: Space[]) => {
-      this.spaceList = Object.entries(spaces).map(([spaceId, spaceData]) => spaceData);
-    });
+    this.apiService.getAllSpaces('Spaces')
+      .then(snapshot => {
+        this.spaceList = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        } as Space));
+      })
+      .catch(error => {
+        console.error('Error fetching spaces:', error);
+      });
   }
 }

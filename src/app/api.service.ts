@@ -1,15 +1,48 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, get, child } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { from } from 'rxjs';
-import { Space } from './types/space';
-import { push, set } from 'firebase/database';
+
+import {
+  Firestore,
+  collection,
+  addDoc,
+  getDocs,
+} from '@angular/fire/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private db: Database) {}
+  constructor(private db: Firestore) {}
+
+  addSpace(collectionName: string, data: any) {
+    const collectionRef = collection(this.db, collectionName);
+    return addDoc(collectionRef, data);
+  }
+
+  getAllSpaces(collectionName: string) {
+    const collectionRef = collection(this.db, collectionName);
+    return getDocs(collectionRef);
+  }
+
+  getOneSpace(collectionName: string, spaceId: string) {
+    const docRef = doc(this.db, collectionName, spaceId);
+    return getDoc(docRef);
+  }
+}
+
+/* If using the realtime database 
+
+// import { Database, ref, get, child } from '@angular/fire/database';
+// import { push, set } from 'firebase/database';
+
+// import { Observable } from 'rxjs';
+// import { from } from 'rxjs';
+
+// import { Space } from './types/space';
+
+
+
+constructor(private db: Database) {}
   getSpaces(): Observable<Space[]> {
     const spacesReference = child(ref(this.db), 'spaces');
 
@@ -21,22 +54,18 @@ export class ApiService {
 
     return from(get(spaceReference).then((snapshot) => snapshot.val()));
   }
-  // addSpace(space: Space) {
-  //   const spacesReference = ref(this.db, 'spaces');
-  //   const payload = {space};
-  //   return from(set(spacesReference, payload));
-  // }
 
   addSpace(space: Omit<Space, 'id'>): void {
     const spacesRef = ref(this.db, 'spaces');
-    const newSpaceRef = push(spacesRef); // Firebase generates a unique key
-    const id = newSpaceRef.key; // Retrieve the generated key
+    const newSpaceRef = push(spacesRef); 
+    const id = newSpaceRef.key;
 
     if (id) {
       const completeSpace: Space = { ...space, id };
-      set(newSpaceRef, completeSpace); // Save the complete object with the ID
+      set(newSpaceRef, completeSpace); 
     } else {
       throw new Error('Failed to generate ID');
     }
   }
-}
+
+*/

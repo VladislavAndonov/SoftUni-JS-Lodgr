@@ -1,21 +1,21 @@
 <div class="details-container">
     <div class="image-carousel">
-        @for (image of space.images; track $index) {
-        <img [src]="image" [alt]="space.name" />
+        @for (image of spaceData.images; track $index) {
+        <img [src]="image" [alt]="spaceData.name" />
         }
     </div>
 
     <div class="details-content">
-        <h1 class="space-title">{{ space.name }}</h1>
-        <p class="space-location">{{ space.location }}</p>
+        <h1 class="space-title">{{ spaceData.name }}</h1>
+        <p class="space-location">{{ spaceData.location }}</p>
 
         <div class="price-info">
-            <p class="price">€{{ space.price }} <span>/ per night</span></p>
+            <p class="price">€{{ spaceData.price }} <span>/ per night</span></p>
         </div>
 
         <div class="space-description">
             <h2>Description</h2>
-            <p>{{ space.description }}</p>
+            <p>{{ spaceData.description }}</p>
         </div>
     </div>
 </div>
