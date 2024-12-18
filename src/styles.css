@@ -1,4 +1,4 @@
-/* Reset CSS */
+@import url('https://fonts.googleapis.com/css2?family=Coda:wght@400;800&family=Red+Rose:wght@300..700&display=swap');/* Reset CSS */
 
 * {
   padding: 0;
@@ -18,7 +18,7 @@ html {
 /* Typography */
 
 html {
-  font: 18px/1.5 Verdana, sans-serif;
+  font: 18px/1.5 Coda, serif;
 }
 
 body,
@@ -48,7 +48,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Georgia, serif;
+  font-family: inherit;
 }
 
 h1,
@@ -58,7 +58,7 @@ h4,
 h5,
 h6 {
   padding-bottom: 0.5rem;
-  padding-top: 1.5rem;
+  /* padding-top: 1.5rem; */
   font-weight: normal;
 }
 
@@ -80,6 +80,7 @@ h4 {
 
 h5 {
   font-size: 1.2em;
+  color: #6c6c6c;
 }
 
 h6 {
@@ -94,27 +95,3 @@ p + h5,
 p + h6 {
   padding-top: 0.5em;
 }
-
-blockquote {
-  padding: 0 2.5em;
-  border-left: 2px solid #000000;
-  font-family: Georgia, serif;
-  margin-bottom: 1.5em;
-}
-
-blockquote,
-p {
-  font-style: italic;
-}
-
-blockquote p + p {
-  padding-top: 1.5em;
-}
-
-blockquote p:last-child {
-  padding-bottom: 0;
-}
-
-blockquote p.author {
-  text-align: right;
-} 

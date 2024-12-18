@@ -25,7 +25,7 @@ export class RegisterComponent {
       Validators.required,
       emailValidator(EMAIL_DOMAINS),
     ]),
-    phoneNumber: new FormControl(''),
+    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
     passGroup: new FormGroup({
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       rePassword: new FormControl('', [Validators.required]),
@@ -74,8 +74,6 @@ export class RegisterComponent {
       this.passGroup?.get(controlName)?.errors?.['required']
     );
   }
-
-  
 
   // Register
   register() {

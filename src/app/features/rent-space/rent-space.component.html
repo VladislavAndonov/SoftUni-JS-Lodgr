@@ -1,137 +1,135 @@
-<div class="rent-space-container">
-    <h1 class="title">Rent Your Space</h1>
+<div class="container">
+    <div class="image-section"></div>
 
-    <form class="rent-form" #form="ngForm" (ngSubmit)="addSpaceSubmit(form)">
-        <div class="form-group">
-            <label for="name">Space Name</label>
-            <input 
-            id="name" 
-            type="text" 
-            name="name" 
-            placeholder="Cozy Apartment" 
-            ngModel
-            #inputSpaceName="ngModel"
-            required
-            minlength="5"
-            />
-        </div>
-        @if(inputSpaceName?.touched){
-        <div>
-            @if(inputSpaceName?.errors?.['required']){
-            <p class="error-message">Space name is required!</p>
+    <div class="form-section">
+        <h1>Rent Your Space<span class="dot">.</span></h1>
+
+        <form class="rent-form" #form="ngForm" (ngSubmit)="addSpaceSubmit(form)">
+            
+            <div class="form-group">
+                <label for="name">Space Name</label>
+                <input 
+                id="name" 
+                type="text" 
+                name="name" 
+                placeholder="Cozy Apartment" 
+                ngModel 
+                #inputSpaceName="ngModel"
+                required minlength="5" />
+            </div>
+
+            @if(inputSpaceName?.touched){
+            <div>
+                @if(inputSpaceName?.errors?.['required']){
+                <p class="error">Space name is required!</p>
+                }
+
+                @if(inputSpaceName?.errors?.['minlength']){
+                <p class="error">Space name must be at least 5 characters!</p>
+                }
+            </div>
             }
 
-            @if(inputSpaceName?.errors?.['minlength']){
-            <p class="error-message">Space name must be at least 5 characters!</p>
-            }
-        </div>
-        }
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input 
-            id="location" 
-            type="text" 
-            name="location" 
-            placeholder="Sofia, Bulgaria"
-            ngModel 
-            #inputSpaceLocation="ngModel"
-            required
-            minlength="5"
-            />
-        </div>
-        @if(inputSpaceLocation?.touched){
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input 
+                id="location" 
+                type="text" 
+                name="location" 
+                placeholder="Sofia, Bulgaria" 
+                ngModel
+                #inputSpaceLocation="ngModel" 
+                required 
+                minlength="5" />
+            </div>
+
+            @if(inputSpaceLocation?.touched){
             <div>
                 @if(inputSpaceLocation?.errors?.['required']){
-                <p class="error-message">Location is required!</p>
+                <p class="error">Location is required!</p>
                 }
-    
+
                 @if(inputSpaceLocation?.errors?.['minlength']){
-                <p class="error-message">Location must be at least 5 characters!</p>
+                <p class="error">Location must be at least 5 characters!</p>
                 }
             </div>
-        }
-        <div class="form-group">
-            <label for="price">Price Per Stay (€)</label>
-            <input 
-            id="price" 
-            type="number" 
-            name="price" 
-            placeholder="109"
-            ngModel
-            #inputSpacePrice="ngModel"
-            required
-            />
-        </div>
-        @if(inputSpacePrice?.touched){
+            }
+
+            <div class="form-group">
+                <label for="price">Price Per Stay (€)</label>
+                <input 
+                id="price" 
+                type="number" 
+                name="price" 
+                placeholder="109" 
+                ngModel 
+                #inputSpacePrice="ngModel"
+                required />
+            </div>
+
+            @if(inputSpacePrice?.touched){
             <div>
                 @if(inputSpacePrice?.errors?.['required']){
-                <p class="error-message">Price is required!</p>
+                <p class="error">Price is required!</p>
                 }
             </div>
-        }
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea 
-            id="description" 
-            name="description" 
-            placeholder="Describe your space..."
-            ngModel
-            #inputSpaceDescription="ngModel"
-            required
-            minlength="10"
-            >
-            </textarea>
-        </div>
-        @if(inputSpaceDescription?.touched){
+            }
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea 
+                id="description" 
+                name="description" 
+                placeholder="Describe your space..." 
+                ngModel 
+                #inputSpaceDescription="ngModel" 
+                required 
+                minlength="10">
+                </textarea>
+            </div>
+
+            @if(inputSpaceDescription?.touched){
             <div>
                 @if(inputSpaceDescription?.errors?.['required']){
-                <p class="error-message">Description is required!</p>
+                <p class="error">Description is required!</p>
                 }
-    
+
                 @if(inputSpaceDescription?.errors?.['minlength']){
-                <p class="error-message">Description must be at least 5 characters!</p>
+                <p class="error">Description must be at least 5 characters!</p>
                 }
             </div>
-        }
-        <div class="form-group">
-            <label for="images">Images (Comma-separated URLs)</label>
-            <input 
-            id="images" 
-            type="text" 
-            name="images" 
-            placeholder="http://image1.jpg, http://image2.jpg"
-            ngModel
-            #inputSpaceImages="ngModel"
-            required
-            appImages
-            />
-        </div>
-        @if(inputSpaceImages?.touched){
+            }
+
+            <div class="form-group">
+                <label for="images">Images (Comma-separated URLs)</label>
+                <input 
+                id="images" 
+                type="text" 
+                name="images" 
+                placeholder="http://image1.jpg, http://image2.jpg" 
+                ngModel
+                #inputSpaceImages="ngModel" 
+                required 
+                appImages />
+            </div>
+
+            @if(inputSpaceImages?.touched){
             <div>
                 @if(inputSpaceImages?.errors?.['required']){
-                <p class="error-message">Add at least one image!</p>
+                <p class="error">Add at least one image!</p>
                 }
-    
+
                 @if(inputSpaceImages?.errors?.['imagesValidator']){
-                <p class="error-message">Please enter valid image URL(s)!</p>
+                <p class="error">Please enter valid image URL(s)!</p>
                 }
             </div>
-        }
+            }
 
-        <button class="submit-button" [disabled]="form.invalid">
-            Submit
-        </button>
-    </form>
-</div>
+            <div class="buttons">
+                <button class="submit-button" [disabled]="form.invalid">
+                    Submit
+                </button>
+            </div>
 
-<!-- [formGroup]="rentForm" -->
-
-
-<!-- <div class="form-group">
-        <label for="amenities">Amenities (Comma-separated)</label>
-        <input id="amenities" type="text" name="amenities" placeholder="e.g., WiFi, Parking, Pool" />
+        </form>
     </div>
-    <div class="form-group">
-        <label for="category">Category</label>
-        <input id="category" type="text" name="category" placeholder="e.g., Apartment" />
-    </div> -->
+</div>
