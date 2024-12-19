@@ -5,6 +5,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  deleteDoc,
+  setDoc,
 } from '@angular/fire/firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { Space } from './types/space';
@@ -30,8 +32,13 @@ export class ApiService {
     return getDoc(docRef);
   }
 
-  getSpaceById(spaceId: string) {
-    const docRef = doc(this.db, 'Spaces', spaceId);
-    return getDoc(docRef);
+  updateSpace(collectionName: string, spaceId: string, data: Partial<Space>) {
+    const docRef = doc(this.db, collectionName, spaceId);
+    return setDoc(docRef, data, { merge: true });
+  }
+
+  deleteSpace(collectionName: string, spaceId: string) {
+    const docRef = doc(this.db, collectionName, spaceId);
+    return deleteDoc(docRef);
   }
 }

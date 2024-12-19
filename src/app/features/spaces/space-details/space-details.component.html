@@ -17,19 +17,10 @@
             <h2>Description</h2>
             <p>{{ space.description }}</p>
         </div>
+
+        @if (isOwner) {
+        <button class="delete-button" (click)="deleteSpace()">Delete Space</button>
+        <button routerLink="edit" class="edit-button">Edit Space</button>
+        }
     </div>
 </div>
-
-<!-- <div class="space-amenities">
-            <h2>Amenities</h2>
-            <ul>
-                @for (amenity of space.amenities) {
-                    <li>{{ amenity }}</li>
-                }
-            </ul>
-        </div> -->
-
-<!-- <div class="host-info">
-            <h2>Hosted by {{ space?.owner?.name }}</h2>
-            <img [src]="space.owner.imageUrl" alt="Host Image" class="host-image" />
-        </div> -->

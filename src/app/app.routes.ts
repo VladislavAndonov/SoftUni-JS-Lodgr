@@ -7,6 +7,7 @@ import { SpacesComponent } from './features/spaces/spaces.component';
 import { SpaceDetailsComponent } from './features/spaces/space-details/space-details.component';
 import { RentSpaceComponent } from './features/rent-space/rent-space.component';
 import { AuthGuard } from './guards/auth.guard';
+import { EditSpaceComponent } from './features/spaces/edit-space/edit-space.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ export const routes: Routes = [
   { path: 'spaces', 
     children: [
       { path: '', component: SpacesComponent },
-      { path: ':id', component: SpaceDetailsComponent }
+      { path: ':id', component: SpaceDetailsComponent },
+      { path: ':id/edit', component: EditSpaceComponent }
     ]
   },
 

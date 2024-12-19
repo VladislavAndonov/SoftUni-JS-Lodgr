@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="image-section"></div>
+
+    <div class="form-section">
+        <h1>Edit Your Space<span class="dot">.</span></h1>
+
+        <form class="edit-form" #form="ngForm" 
+            (ngSubmit)="editSpaceSubmit()">
+
+            <div class="form-group">
+                <label for="name">Space Name</label>
+                <input id="name" type="text" name="name" placeholder="Cozy Apartment" [(ngModel)]="space.name" #inputSpaceName="ngModel"
+                    required minlength="5" />
+            </div>
+
+            @if(inputSpaceName?.touched){
+            <div>
+                @if(inputSpaceName?.errors?.['required']){
+                <p class="error">Space name is required!</p>
+                }
+
+                @if(inputSpaceName?.errors?.['minlength']){
+                <p class="error">Space name must be at least 5 characters!</p>
+                }
+            </div>
+            }
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input id="location" type="text" name="location" placeholder="Sofia, Bulgaria" [(ngModel)]="space.location"
+                    #inputSpaceLocation="ngModel" required minlength="5" />
+            </div>
+
+            @if(inputSpaceLocation?.touched){
+            <div>
+                @if(inputSpaceLocation?.errors?.['required']){
+                <p class="error">Location is required!</p>
+                }
+
+                @if(inputSpaceLocation?.errors?.['minlength']){
+                <p class="error">Location must be at least 5 characters!</p>
+                }
+            </div>
+            }
+
+            <div class="form-group">
+                <label for="price">Price Per Stay (€)</label>
+                <input id="price" type="number" name="price" placeholder="109" [(ngModel)]="space.price" #inputSpacePrice="ngModel"
+                    required />
+            </div>
+
+            @if(inputSpacePrice?.touched){
+            <div>
+                @if(inputSpacePrice?.errors?.['required']){
+                <p class="error">Price is required!</p>
+                }
+            </div>
+            }
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Describe your space..." [(ngModel)]="space.description"
+                    #inputSpaceDescription="ngModel" required minlength="10">
+                </textarea>
+            </div>
+
+            @if(inputSpaceDescription?.touched){
+            <div>
+                @if(inputSpaceDescription?.errors?.['required']){
+                <p class="error">Description is required!</p>
+                }
+
+                @if(inputSpaceDescription?.errors?.['minlength']){
+                <p class="error">Description must be at least 5 characters!</p>
+                }
+            </div>
+            }
+
+            <div class="form-group">
+                <label for="images">Images (Comma-separated URLs)</label>
+                <textarea id="images" type="text" name="images" placeholder="http://image1.jpg, http://image2.jpg"
+                [(ngModel)]="space.images" #inputSpaceImages="ngModel" required appImages>
+                </textarea>
+            </div>
+
+            @if(inputSpaceImages?.touched){
+            <div>
+                @if(inputSpaceImages?.errors?.['required']){
+                <p class="error">Add at least one image!</p>
+                }
+
+                @if(inputSpaceImages?.errors?.['imagesValidator']){
+                <p class="error">Please enter valid image URL(s)!</p>
+                }
+            </div>
+            }
+
+            <div class="buttons">
+                <button class="save-button" [disabled]="form.invalid">
+                    Save Changes
+                </button>
+                <button class="cancel-button" type="button" (click)="cancelEdit()">
+                    Cancel
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
