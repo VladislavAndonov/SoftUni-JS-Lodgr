@@ -4,18 +4,18 @@
     <div class="form-section">
         <h1>Rent Your Space<span class="dot">.</span></h1>
 
-        <form class="rent-form" #form="ngForm" (ngSubmit)="addSpaceSubmit(form)">
-            
+        <form class="rent-form" #form="ngForm" 
+            (ngSubmit)="addSpaceSubmit(
+            inputSpaceName.value, 
+            inputSpaceLocation.value, 
+            inputSpacePrice.value, 
+            inputSpaceDescription.value, 
+            inputSpaceImages.value)">
+
             <div class="form-group">
                 <label for="name">Space Name</label>
-                <input 
-                id="name" 
-                type="text" 
-                name="name" 
-                placeholder="Cozy Apartment" 
-                ngModel 
-                #inputSpaceName="ngModel"
-                required minlength="5" />
+                <input id="name" type="text" name="name" placeholder="Cozy Apartment" ngModel #inputSpaceName="ngModel"
+                    required minlength="5" />
             </div>
 
             @if(inputSpaceName?.touched){
@@ -32,15 +32,8 @@
 
             <div class="form-group">
                 <label for="location">Location</label>
-                <input 
-                id="location" 
-                type="text" 
-                name="location" 
-                placeholder="Sofia, Bulgaria" 
-                ngModel
-                #inputSpaceLocation="ngModel" 
-                required 
-                minlength="5" />
+                <input id="location" type="text" name="location" placeholder="Sofia, Bulgaria" ngModel
+                    #inputSpaceLocation="ngModel" required minlength="5" />
             </div>
 
             @if(inputSpaceLocation?.touched){
@@ -57,14 +50,8 @@
 
             <div class="form-group">
                 <label for="price">Price Per Stay (€)</label>
-                <input 
-                id="price" 
-                type="number" 
-                name="price" 
-                placeholder="109" 
-                ngModel 
-                #inputSpacePrice="ngModel"
-                required />
+                <input id="price" type="number" name="price" placeholder="109" ngModel #inputSpacePrice="ngModel"
+                    required />
             </div>
 
             @if(inputSpacePrice?.touched){
@@ -76,14 +63,8 @@
             }
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea 
-                id="description" 
-                name="description" 
-                placeholder="Describe your space..." 
-                ngModel 
-                #inputSpaceDescription="ngModel" 
-                required 
-                minlength="10">
+                <textarea id="description" name="description" placeholder="Describe your space..." ngModel
+                    #inputSpaceDescription="ngModel" required minlength="10">
                 </textarea>
             </div>
 
@@ -101,15 +82,8 @@
 
             <div class="form-group">
                 <label for="images">Images (Comma-separated URLs)</label>
-                <textarea 
-                id="images" 
-                type="text" 
-                name="images" 
-                placeholder="http://image1.jpg, http://image2.jpg" 
-                ngModel
-                #inputSpaceImages="ngModel" 
-                required 
-                appImages>
+                <textarea id="images" type="text" name="images" placeholder="http://image1.jpg, http://image2.jpg"
+                    ngModel #inputSpaceImages="ngModel" required appImages>
                 </textarea>
             </div>
 

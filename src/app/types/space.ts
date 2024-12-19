@@ -1,5 +1,5 @@
 export interface Space {
-    id: string;
+    id?: string;
     name: string;
     location: string;
     price: number;

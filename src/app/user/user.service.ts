@@ -14,8 +14,8 @@ import { User } from '../types/user';
   providedIn: 'root',
 })
 export class UserService {
-  private usersCollection = 'Users';
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  usersCollection = 'Users';
+  currentUserSubject = new BehaviorSubject<User | null>(null);
 
   constructor(private auth: Auth, private firestore: Firestore) {
     // Listen for auth state changes

@@ -1,53 +1,59 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Space } from '../../types/space';
+import { UserService } from '../../user/user.service';
+import { FormsModule } from '@angular/forms'; // Add this import
+import { Router } from '@angular/router';
 import { ImagesDirective } from '../../directives/images.directive';
 
 @Component({
   selector: 'app-rent-space',
   standalone: true,
-  imports: [FormsModule, ImagesDirective],
   templateUrl: './rent-space.component.html',
   styleUrls: ['./rent-space.component.css'],
+  imports: [FormsModule, ImagesDirective],
 })
 export class RentSpaceComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
-  // addSpaceSubmit(
-  //   name: string,
-  //   location: string,
-  //   price: string,
-  //   description: string,
-  //   images: string
-  // ) {
-  //   const priceValue = parseFloat(price);
-  //   if (isNaN(priceValue)) {
-  //     throw new Error(`Invalid price input: ${price}`);
-  //   }
-
-  //   const imagesArray = images.split(',').map((img) => img.trim());
-
-  //   const newSpace = {
-  //     name,
-  //     location,
-  //     price: priceValue,
-  //     description,
-  //     images: imagesArray,
-  //   };
-
-  //   this.apiService.addSpace(newSpace);
-  // }
-
-
-
-  addSpaceSubmit(form: NgForm) {
-    console.log(form);
-
-    if (form.invalid) {
-      console.error('Form is invalid');
-      return;
+  async addSpaceSubmit(
+    name: string,
+    location: string,
+    price: string,
+    description: string,
+    images: string
+  ) {
+    const user = this.userService.currentUserSubject.value;
+    if (!user) {
+      throw new Error('User is not logged in');
     }
-    console.log(form.value);
-    
+
+    const imagesArray = images.split(',').map((img) => img.trim()); // Split and trim
+
+    const priceValue = parseFloat(price);
+    if (isNaN(priceValue)) {
+      throw new Error(`Invalid price input: ${price}`);
+    }
+
+    const spaceData: Space = { 
+      name,
+      location,
+      price: priceValue,
+      description,
+      images: imagesArray,
+      ownerId: user.id,
+    };
+
+    try {
+      const result = await this.apiService.addSpace('Spaces', spaceData);
+      console.log('Space added successfully', result);
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.error('Error adding space', error);
+    }
   }
 }
