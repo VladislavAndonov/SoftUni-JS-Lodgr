@@ -28,4 +28,9 @@ export class ApiService {
     const docRef = doc(this.db, collectionName, spaceId);
     return getDoc(docRef);
   }
+
+  getSpaceById(spaceId: string) {
+    const docRef = doc(this.db, 'Spaces', spaceId);
+    return getDoc(docRef);
+  }
 }

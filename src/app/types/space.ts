@@ -1,5 +1,3 @@
-// import { User } from "./user";
-
 export interface Space {
     id: string;
     name: string;
@@ -7,5 +5,5 @@ export interface Space {
     price: number;
     images: string[];
     description: string;
+    ownerId: string;
 }
-    // owner: User;

@@ -11,7 +11,7 @@ import { Space } from '../../../types/space';
 })
 export class SpaceDetailsComponent implements OnInit {
   private spaceId: string | null = null;
-  public spaceData = {} as Space;
+  public space = {} as Space;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
@@ -23,7 +23,7 @@ export class SpaceDetailsComponent implements OnInit {
         .getOneSpace('Spaces', this.spaceId)
         .then((doc) => {
           if (doc.exists()) {
-            this.spaceData = {
+            this.space = {
               ...doc.data(),
               id: doc.id,
             } as Space;
