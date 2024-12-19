@@ -22,7 +22,7 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login();
+    this.userService.login(form.value.email, form.value.password);
     this.router.navigate(['/']);
   }
 }

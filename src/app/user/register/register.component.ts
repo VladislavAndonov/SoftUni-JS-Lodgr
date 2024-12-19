@@ -9,13 +9,14 @@ import { RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
 import { EMAIL_DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   form = new FormGroup({
@@ -25,14 +26,18 @@ export class RegisterComponent {
       emailValidator(EMAIL_DOMAINS),
     ]),
     phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
-    passGroup: new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      rePassword: new FormControl('', [Validators.required]),
-    },
-    {
-      validators: [matchPasswordsValidator('password', 'rePassword')],
-    }),
+    passGroup: new FormGroup(
+      {
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        rePassword: new FormControl('', [Validators.required]),
+      },
+      {
+        validators: [matchPasswordsValidator('password', 'rePassword')],
+      }
+    ),
   });
+
+  constructor(private userService: UserService) {}
 
   // General validations
   isInputMissing(controlName: string) {
@@ -67,6 +72,7 @@ export class RegisterComponent {
       this.passGroup?.get('password')?.errors?.['minlength']
     );
   }
+
   isPassMissing(controlName: string) {
     return (
       this.passGroup?.get(controlName)?.touched &&
@@ -74,8 +80,27 @@ export class RegisterComponent {
     );
   }
 
-  // Register
-  register() {
-    console.log(this.form.value);
+  // Register user
+  async register() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    const { name, email, phoneNumber, passGroup } = this.form.value;
+
+    try {
+      await this.userService.register(
+        email as string,
+        passGroup?.password as string,
+        name as string,
+        phoneNumber as string
+      );
+      console.log('Registration successful');
+
+      //TODO: Redirect to login
+    
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
   }
 }
