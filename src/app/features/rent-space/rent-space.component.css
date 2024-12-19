@@ -6,7 +6,7 @@
   max-width: 1200px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -41,7 +41,7 @@
   margin-bottom: 1.5rem;
 }
 
-.form-group input:focus
+.form-group input:focus,
 .form-group textarea:focus {
   border-color: #007bff;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);

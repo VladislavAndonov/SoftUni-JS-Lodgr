@@ -101,7 +101,7 @@
 
             <div class="form-group">
                 <label for="images">Images (Comma-separated URLs)</label>
-                <input 
+                <textarea 
                 id="images" 
                 type="text" 
                 name="images" 
@@ -109,7 +109,8 @@
                 ngModel
                 #inputSpaceImages="ngModel" 
                 required 
-                appImages />
+                appImages>
+                </textarea>
             </div>
 
             @if(inputSpaceImages?.touched){

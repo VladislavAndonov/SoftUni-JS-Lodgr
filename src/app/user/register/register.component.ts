@@ -9,7 +9,6 @@ import { RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
 import { EMAIL_DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
-import { min } from 'rxjs';
 
 @Component({
   selector: 'app-register',

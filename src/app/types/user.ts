@@ -4,7 +4,7 @@ export interface User {
     phoneNumber: string;
     email: string;
     password: string;
-    spaces: string[];
+    // spaces: string[];
 }
 
 export interface UserForAuth {
