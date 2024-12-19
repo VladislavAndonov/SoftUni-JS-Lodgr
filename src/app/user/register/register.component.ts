@@ -5,11 +5,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
 import { EMAIL_DOMAINS } from '../../constants';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
+import { User } from '../../types/user';
 
 @Component({
   selector: 'app-register',
@@ -25,10 +26,16 @@ export class RegisterComponent {
       Validators.required,
       emailValidator(EMAIL_DOMAINS),
     ]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
+    phoneNumber: new FormControl('', [
+      Validators.required,
+      Validators.minLength(9),
+    ]),
     passGroup: new FormGroup(
       {
-        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
         rePassword: new FormControl('', [Validators.required]),
       },
       {
@@ -37,7 +44,7 @@ export class RegisterComponent {
     ),
   });
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   // General validations
   isInputMissing(controlName: string) {
@@ -80,27 +87,20 @@ export class RegisterComponent {
     );
   }
 
-  // Register user
   async register() {
-    if (this.form.invalid) {
-      return;
-    }
+    if (this.form.invalid) return;
 
     const { name, email, phoneNumber, passGroup } = this.form.value;
+    const password = passGroup?.password!;
 
     try {
       await this.userService.register(
-        email as string,
-        passGroup?.password as string,
-        name as string,
-        phoneNumber as string
+        { id: '', name, email, phoneNumber } as User, // Firebase will assign the ID
+        password
       );
-      console.log('Registration successful');
-
-      //TODO: Redirect to login
-    
+      this.router.navigate(['/']);
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error(error);
     }
   }
 }
