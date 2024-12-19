@@ -2,6 +2,7 @@
   background-color: #fff;
   border-bottom: 2px solid #000000;
   padding: 10px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -14,10 +15,16 @@
 }
 
 .logo a {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #333;
   text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: #007bff;
 }
 
 .navigation ul {
@@ -35,9 +42,23 @@
   color: #333;
   text-decoration: none;
   font-size: 1rem;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .navigation a:hover {
-  color: #007bff;
+  color: #7b7b7b;
+  transform: translateY(-2px);
+}
+
+.logout-button {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.user-email {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-left: 15px;
+  font-weight: 500;
 }

@@ -1,26 +1,69 @@
 <div class="home">
+    <!-- Hero Section -->
     <div class="hero-section">
         <app-search-bar></app-search-bar>
     </div>
 
-    <!-- Featured Spaces Section -->
-    <div class="featured-spaces-section">
-        <h2>Featured Spaces</h2>
-        <div class="featured-spaces">
-            @for (space of featuredSpaces; track $index) {
-            <div class="space-card">
-                <img [src]="space.images[0]" [alt]="space.name" class="space-image" />
-                <div class="space-info">
-                    <h3 class="space-name">{{ space.name }}</h3>
-                    <p class="space-location">{{ space.location }}</p>
-                    <p class="space-price">{{ space.price }}</p>
+    <div class="container">
+
+        <!-- Featured Spaces Section -->
+        <div class="featured-spaces-section">
+            <h2>Featured Spaces</h2>
+            <div class="featured-spaces">
+                @for (space of featuredSpaces; track $index) {
+                <div class="space-card">
+                    <img [src]="space.images[0]" [alt]="space.name" class="space-image" />
+                    <div class="space-info">
+                        <h3 class="space-name">{{ space.name }}</h3>
+                        <p class="space-location">{{ space.location }}</p>
+                        <p class="space-price">€{{ space.price }} per night</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="why-choose-us-section">
+            <h2>Why Choose Us?</h2>
+            <div class="benefits">
+                <div class="benefit-card">
+                    <h3>Wide Range of Spaces</h3>
+                    <p>We offer a variety of properties for every type of traveler, whether you're looking for a cozy
+                        apartment or a luxurious villa.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Secure & Verified</h3>
+                    <p>All our listings are verified, ensuring a safe and trustworthy booking experience for our users.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated support team is available around the clock to assist you with any questions or
+                        issues.</p>
                 </div>
             </div>
-            }
         </div>
-    </div>
 
-    <div class="cta-section">
-        <button class="cta-button" routerLink="/spaces">View All Spaces</button>
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <h2>What Our Users Say</h2>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <p>"Lodgr made it so easy to find the perfect place for my vacation. Highly recommend!"</p>
+                    <p class="user">- John Doe</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The booking process was seamless, and the property was exactly as described. Will use again!"
+                    </p>
+                    <p class="user">- Sarah Lee</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <button class="cta-button" routerLink="/spaces">View All Spaces</button>
+        </div>
     </div>
 </div>

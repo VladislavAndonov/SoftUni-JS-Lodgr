@@ -1,25 +1,24 @@
 <header class="header">
-    <div class="container">
-      <div class="logo">
-        <a routerLink="/">Lodgr</a>
-      </div>
-      <nav class="navigation">
-        <ul>
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/spaces">Explore Spaces</a></li>
-  
-          @if (userService.isLogged) {
-            <!-- User routes -->
-            <li><a routerLink="/rent-space">Rent Space</a></li>
-            <li><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
-            <li><span>{{ currentUser?.email }}</span></li>
-          } @else {
-            <!-- Guest routes -->
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/register">Register</a></li>
-          }
-        </ul>
-      </nav>
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/">Lodgr</a>
     </div>
-  </header>
-  
+    <nav class="navigation">
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/spaces">Explore Spaces</a></li>
+
+        @if (userService.isLogged) {
+        <!-- User routes -->
+        <li><a routerLink="/rent-space">Rent Space</a></li>
+        <li><a (click)="onLogout()" class="logout-button">Logout</a></li>
+        <li><span class="user-email">{{ currentUser?.email }}</span></li>
+        } @else {
+        <!-- Guest routes -->
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

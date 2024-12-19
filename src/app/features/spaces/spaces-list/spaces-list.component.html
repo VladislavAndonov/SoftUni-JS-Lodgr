@@ -1,13 +1,16 @@
 <div class="spaces-list">
   @for (space of spaceList; track $index) {
   <div class="space-card">
-    <a [routerLink]="['/spaces', space.id]">
-      <img [src]="space.images[0]" [alt]="space.name" class="space-image" />
-    </a>
+    <div class="space-image-wrapper">
+      <a [routerLink]="['/spaces', space.id]">
+        <img [src]="space.images[0]" [alt]="space.name" class="space-image" />
+      </a>
+    </div>
     <div class="space-info">
       <h3 class="space-name">{{ space.name }}</h3>
       <p class="space-location">{{ space.location }}</p>
       <p class="space-price">€{{ space.price }}</p>
+      <a class="cta-button" [routerLink]="['/spaces', space.id]">View Details</a>
     </div>
   </div>
   }

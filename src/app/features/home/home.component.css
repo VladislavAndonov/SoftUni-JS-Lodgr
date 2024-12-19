@@ -1,106 +1,109 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .hero-section {
-  background: url("/images/snowy-cabin-2k.jpg") no-repeat center center/cover;
-  height: 30rem;
+  background: url('/images/snowy-cabin-2k.jpg') center/cover no-repeat;
+  padding: 10rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
-.hero-section app-search-bar {
-  width: 80%;
-  max-width: 600px;
-  z-index: 1;
+.featured-spaces-section,
+.why-choose-us-section,
+.testimonials-section {
+  margin: 3rem 0;
 }
 
-.hero-section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 0;
-}
-
-.featured-spaces-section {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.featured-spaces-section h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #333;
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 .featured-spaces {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px;
+  gap: 2rem;
 }
 
-.space-card {
-  background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
+.space-card,
+.benefit-card,
+.testimonial-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s;
 }
 
-.space-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.space-card:hover,
+.benefit-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-10px);
 }
 
 .space-image {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
 }
 
 .space-info {
-  padding: 15px;
-  text-align: center;
+  padding: 1rem;
 }
 
 .space-name {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
-  margin: 0;
 }
 
-.space-location {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 5px 0;
-}
-
+.space-location,
 .space-price {
   font-size: 1rem;
-  font-weight: bold;
-  color: #007bff;
-  margin: 10px 0 0;
+  color: #777;
 }
 
-.cta-section {
-  margin-top: 20px;
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.benefit-card {
+  padding: 1.5rem;
   text-align: center;
 }
 
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+}
+
 .cta-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
+  padding: 0.8rem 2rem;
   background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .cta-button:hover {

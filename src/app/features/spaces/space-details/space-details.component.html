@@ -1,8 +1,13 @@
 <div class="details-container">
     <div class="image-carousel">
-        @for (image of space.images; track $index) {
-        <img [src]="image" [alt]="space.name" />
-        }
+        <div class="main-image">
+            <img [src]="space.images[0]" [alt]="space.name" class="image-large" />
+        </div>
+        <div class="side-images">
+            @for (image of space.images.slice(1); track $index) {
+            <img [src]="image" [alt]="space.name" class="image-small" />
+            }
+        </div>
     </div>
 
     <div class="details-content">
