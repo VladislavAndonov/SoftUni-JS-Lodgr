@@ -31,5 +31,5 @@ export class HomeComponent {
       .catch((error) => {
         console.error('Error fetching spaces:', error);
       });
-  }
+  }  
 }
