@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from '@angular/fire/auth';
 import { User } from '../types/user';
 
 @Injectable({
@@ -24,8 +29,17 @@ export class UserService {
   }
 
   // Register a new user with Firebase Authentication
-  async register(email: string, password: string, name: string, phoneNumber: string): Promise<void> {
-    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+  async register(
+    email: string,
+    password: string,
+    name: string,
+    phoneNumber: string
+  ): Promise<void> {
+    const userCredential = await createUserWithEmailAndPassword(
+      this.auth,
+      email,
+      password
+    );
     const { uid } = userCredential.user;
 
     // Set user details
@@ -43,16 +57,20 @@ export class UserService {
 
   // Login a user
   async login(email: string, password: string): Promise<void> {
-    const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      this.auth,
+      email,
+      password
+    );
     const { uid } = userCredential.user;
 
-    // Fetch user details (you might fetch these from Firestore if needed)
+    // Set a placeholder for name and phoneNumber (fetch from Firestore if needed)
     this.user = {
       id: uid,
-      name: 'Placeholder Name', // Replace with Firestore data if implemented
-      phoneNumber: '123-456-789', // Replace with Firestore data if implemented
-      email : "email@gmail.com",
-      password, // Not ideal for real-world apps; usually hashed on the server
+      name: 'Placeholder Name', // Replace with Firestore data
+      phoneNumber: '123-456-789', // Replace with Firestore data
+      email,
+      password,
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
